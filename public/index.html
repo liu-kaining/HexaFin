@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>HexaFin | 赛博玄学金融预测系统</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- 免责声明弹窗 -->
+  <div class="disclaimer-overlay" id="disclaimer">
+    <div class="disclaimer-box">
+      <h2>⚠ 免责声明 / DISCLAIMER ⚠</h2>
+      <p>
+        本系统「HexaFin 赛博玄学金融预测」仅供<span class="warn">娱乐与学术研究</span>目的。
+      </p>
+      <p>
+        系统通过周易大衍筮法结合市场数据生成卦象解读，<span class="warn">不构成任何投资建议</span>。
+        所有「操作评级」均为算法生成的玄学映射，与实际市场走势无必然关联。
+      </p>
+      <p>
+        投资有风险，入市需谨慎。请勿依据本系统输出做出任何真实交易决策。
+      </p>
+      <button class="disclaimer-btn" id="disclaimer-btn">吾已知悉，入局观卦</button>
+    </div>
+  </div>
+
+  <!-- 页面头部 -->
+  <header class="header">
+    <div>
+      <div class="header-title">HEXAFIN</div>
+      <div class="header-subtitle">赛博玄学金融预测系统 v1.0 | SHA-256 种子化大衍筮法引擎</div>
+    </div>
+    <div class="ticker-selector" id="ticker-selector">
+      <!-- 动态生成 ticker 按钮 -->
+    </div>
+  </header>
+
+  <!-- 三栏主布局 -->
+  <main class="main-grid">
+
+    <!-- 左栏：金融数据面板 -->
+    <section class="panel" id="panel-data">
+      <div class="panel-title">// 金融数据 Financial Data</div>
+
+      <div class="data-row">
+        <span class="data-label">Ticker</span>
+        <span class="data-value highlight" id="val-ticker">--</span>
+      </div>
+      <div class="data-row">
+        <span class="data-label">Date</span>
+        <span class="data-value" id="val-date">--</span>
+      </div>
+      <div class="data-row">
+        <span class="data-label">Close</span>
+        <span class="data-value" id="val-close">--</span>
+      </div>
+      <div class="data-row">
+        <span class="data-label">Volume</span>
+        <span class="data-value" id="val-volume">--</span>
+      </div>
+      <div class="data-row">
+        <span class="data-label">RSI(14)</span>
+        <span class="data-value" id="val-rsi">--</span>
+      </div>
+      <div class="data-row">
+        <span class="data-label">MACD</span>
+        <span class="data-value" id="val-macd">--</span>
+      </div>
+
+      <div class="seed-display">
+        <div class="data-label" style="margin-bottom:4px;">SHA-256 Seed:</div>
+        <div id="val-seed">--</div>
+      </div>
+    </section>
+
+    <!-- 中栏：推演日志终端 -->
+    <section class="panel terminal" id="panel-terminal">
+      <div class="panel-title">// 大衍筮法推演终端 Divination Terminal</div>
+      <div id="terminal-output"></div>
+      <span class="terminal-cursor" id="cursor"></span>
+    </section>
+
+    <!-- 右栏：卦象 + AI 神谕 -->
+    <section class="panel" id="panel-oracle">
+      <div class="panel-title">// 卦象神谕 Oracle</div>
+
+      <div class="hexagram-display" id="hexagram-display" style="display:none;">
+        <div class="hexagram-symbol" id="hex-symbol"></div>
+        <div class="hexagram-name" id="hex-name"></div>
+        <div class="hexagram-meaning" id="hex-meaning"></div>
+
+        <div class="yao-lines" id="yao-lines">
+          <!-- 六爻 ASCII -->
+        </div>
+
+        <div class="changed-hexagram" id="changed-hex" style="display:none;">
+          动爻变化 → <span class="name" id="changed-name"></span>
+        </div>
+      </div>
+
+      <div class="oracle-section" id="oracle-section" style="display:none;">
+        <div class="oracle-block">
+          <div class="oracle-label">象辞破译</div>
+          <div class="oracle-text" id="oracle-decryption"></div>
+        </div>
+
+        <div class="oracle-block">
+          <div class="oracle-label">盘面映射</div>
+          <div class="oracle-text" id="oracle-mapping"></div>
+        </div>
+
+        <div class="oracle-block">
+          <div class="oracle-label">操作评级</div>
+          <div id="oracle-action-wrap"></div>
+        </div>
+
+        <div class="oracle-block">
+          <div class="oracle-label">关键位</div>
+          <div class="oracle-levels">
+            <div class="level-item">
+              <span class="level-label">支撑:</span>
+              <span class="level-value support" id="oracle-support"></span>
+            </div>
+            <div class="level-item">
+              <span class="level-label">阻力:</span>
+              <span class="level-value resistance" id="oracle-resistance"></span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,527 @@
+/* ============================================================
+   HexaFin - 赛博玄学终端样式
+   ============================================================ */
+
+@import url('https://fonts.googleapis.com/css2?family=Source+Code+Pro:wght@400;600;700&display=swap');
+
+:root {
+  --bg-primary: #000000;
+  --bg-panel: #0a0a0a;
+  --bg-header: #0d1117;
+  --text-green: #00ff00;
+  --text-green-dim: #00aa00;
+  --text-red: #ff0000;
+  --text-gold: #ffd700;
+  --text-muted: #555555;
+  --border-color: #1a3a1a;
+  --font-mono: 'Source Code Pro', 'Courier New', monospace;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: var(--bg-primary);
+  color: var(--text-green);
+  font-family: var(--font-mono);
+  font-size: 14px;
+  line-height: 1.6;
+  overflow-x: hidden;
+  min-height: 100vh;
+}
+
+/* CRT 扫描线效果 */
+body::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 9999;
+  background: repeating-linear-gradient(
+    0deg,
+    rgba(0, 0, 0, 0.03) 0px,
+    rgba(0, 0, 0, 0.03) 1px,
+    transparent 1px,
+    transparent 2px
+  );
+}
+
+/* CRT 闪烁微光 */
+body::after {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 9998;
+  animation: crt-flicker 0.15s infinite;
+  opacity: 0.02;
+  background: rgba(0, 255, 0, 0.03);
+}
+
+@keyframes crt-flicker {
+  0% { opacity: 0.02; }
+  50% { opacity: 0.04; }
+  100% { opacity: 0.02; }
+}
+
+/* ============ 页面头部 ============ */
+.header {
+  background: var(--bg-header);
+  border-bottom: 1px solid var(--border-color);
+  padding: 12px 24px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.header-title {
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--text-gold);
+  letter-spacing: 2px;
+}
+
+.header-subtitle {
+  font-size: 11px;
+  color: var(--text-green-dim);
+}
+
+.ticker-selector {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+
+.ticker-btn {
+  background: transparent;
+  border: 1px solid var(--border-color);
+  color: var(--text-green-dim);
+  font-family: var(--font-mono);
+  font-size: 13px;
+  padding: 4px 12px;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.ticker-btn:hover {
+  border-color: var(--text-green);
+  color: var(--text-green);
+}
+
+.ticker-btn.active {
+  border-color: var(--text-gold);
+  color: var(--text-gold);
+  background: rgba(255, 215, 0, 0.05);
+}
+
+/* ============ 三栏主布局 ============ */
+.main-grid {
+  display: grid;
+  grid-template-columns: 280px 1fr 320px;
+  gap: 1px;
+  height: calc(100vh - 52px);
+  background: var(--border-color);
+}
+
+.panel {
+  background: var(--bg-panel);
+  padding: 16px;
+  overflow-y: auto;
+}
+
+.panel-title {
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--text-gold);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 12px;
+  padding-bottom: 8px;
+  border-bottom: 1px solid var(--border-color);
+}
+
+/* ============ 左栏：金融数据 ============ */
+.data-row {
+  display: flex;
+  justify-content: space-between;
+  padding: 6px 0;
+  border-bottom: 1px solid rgba(0, 255, 0, 0.05);
+}
+
+.data-label {
+  color: var(--text-muted);
+  font-size: 12px;
+}
+
+.data-value {
+  color: var(--text-green);
+  font-weight: 600;
+}
+
+.data-value.highlight {
+  color: var(--text-gold);
+}
+
+.seed-display {
+  margin-top: 16px;
+  padding: 8px;
+  background: rgba(0, 255, 0, 0.03);
+  border: 1px solid var(--border-color);
+  font-size: 11px;
+  word-break: break-all;
+  color: var(--text-green-dim);
+}
+
+/* ============ 中栏：推演日志终端 ============ */
+.terminal {
+  background: #000;
+  font-size: 12px;
+  line-height: 1.8;
+  padding: 12px;
+  height: 100%;
+  overflow-y: auto;
+}
+
+.terminal-line {
+  opacity: 0;
+  animation: type-in 0.1s forwards;
+  white-space: nowrap;
+}
+
+.terminal-line.visible {
+  opacity: 1;
+}
+
+.terminal-line .yao-label {
+  color: var(--text-gold);
+}
+
+.terminal-line .change-label {
+  color: var(--text-muted);
+}
+
+.terminal-line .value {
+  color: var(--text-green);
+}
+
+.terminal-cursor {
+  display: inline-block;
+  width: 8px;
+  height: 14px;
+  background: var(--text-green);
+  animation: blink 1s step-end infinite;
+  vertical-align: middle;
+  margin-left: 2px;
+}
+
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
+
+@keyframes type-in {
+  from { opacity: 0; transform: translateX(-5px); }
+  to { opacity: 1; transform: translateX(0); }
+}
+
+/* ============ 右栏：卦象 + AI 神谕 ============ */
+.hexagram-display {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.hexagram-name {
+  font-size: 20px;
+  color: var(--text-gold);
+  font-weight: 700;
+  margin-bottom: 4px;
+}
+
+.hexagram-symbol {
+  font-size: 48px;
+  color: var(--text-gold);
+  margin: 8px 0;
+}
+
+.hexagram-meaning {
+  font-size: 12px;
+  color: var(--text-green-dim);
+  font-style: italic;
+}
+
+/* 六爻 ASCII 图 */
+.yao-lines {
+  display: flex;
+  flex-direction: column-reverse;
+  align-items: center;
+  gap: 4px;
+  margin: 16px 0;
+  font-size: 16px;
+  letter-spacing: 2px;
+}
+
+.yao-line {
+  font-weight: 700;
+}
+
+.yao-line.yang {
+  color: var(--text-green);
+}
+
+.yao-line.yin {
+  color: var(--text-green);
+}
+
+.yao-line.moving {
+  color: var(--text-red);
+  animation: pulse-red 1.5s ease-in-out infinite;
+}
+
+@keyframes pulse-red {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.5; }
+}
+
+/* 变卦指示 */
+.changed-hexagram {
+  margin-top: 12px;
+  padding-top: 12px;
+  border-top: 1px dashed var(--border-color);
+  font-size: 12px;
+  color: var(--text-muted);
+}
+
+.changed-hexagram .name {
+  color: var(--text-gold);
+}
+
+/* AI 神谕区域 */
+.oracle-section {
+  margin-top: 20px;
+  padding-top: 16px;
+  border-top: 1px solid var(--border-color);
+}
+
+.oracle-block {
+  margin-bottom: 14px;
+}
+
+.oracle-label {
+  font-size: 11px;
+  color: var(--text-gold);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 4px;
+}
+
+.oracle-text {
+  font-size: 12px;
+  color: var(--text-green);
+  line-height: 1.7;
+}
+
+.oracle-action {
+  display: inline-block;
+  padding: 4px 12px;
+  font-weight: 700;
+  font-size: 13px;
+  border: 1px solid;
+  margin-top: 4px;
+}
+
+.oracle-action.buy {
+  color: #00ff00;
+  border-color: #00ff00;
+  background: rgba(0, 255, 0, 0.05);
+}
+
+.oracle-action.strong-buy {
+  color: #00ff88;
+  border-color: #00ff88;
+  background: rgba(0, 255, 136, 0.08);
+}
+
+.oracle-action.sell {
+  color: #ff4444;
+  border-color: #ff4444;
+  background: rgba(255, 68, 68, 0.05);
+}
+
+.oracle-action.strong-sell {
+  color: #ff0000;
+  border-color: #ff0000;
+  background: rgba(255, 0, 0, 0.08);
+}
+
+.oracle-action.hold {
+  color: #ffd700;
+  border-color: #ffd700;
+  background: rgba(255, 215, 0, 0.05);
+}
+
+.oracle-levels {
+  display: flex;
+  gap: 16px;
+  margin-top: 8px;
+  font-size: 12px;
+}
+
+.level-item {
+  display: flex;
+  gap: 6px;
+}
+
+.level-label {
+  color: var(--text-muted);
+}
+
+.level-value.support {
+  color: var(--text-green);
+}
+
+.level-value.resistance {
+  color: var(--text-red);
+}
+
+/* ============ 免责声明弹窗 ============ */
+.disclaimer-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.92);
+  z-index: 10000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.disclaimer-overlay.hidden {
+  display: none;
+}
+
+.disclaimer-box {
+  background: var(--bg-panel);
+  border: 1px solid var(--text-gold);
+  padding: 32px;
+  max-width: 520px;
+  width: 90%;
+  text-align: center;
+}
+
+.disclaimer-box h2 {
+  color: var(--text-red);
+  font-size: 16px;
+  margin-bottom: 16px;
+  letter-spacing: 2px;
+}
+
+.disclaimer-box p {
+  font-size: 12px;
+  color: var(--text-green-dim);
+  margin-bottom: 12px;
+  line-height: 1.8;
+}
+
+.disclaimer-box .warn {
+  color: var(--text-red);
+  font-weight: 600;
+}
+
+.disclaimer-btn {
+  margin-top: 20px;
+  background: transparent;
+  border: 1px solid var(--text-gold);
+  color: var(--text-gold);
+  font-family: var(--font-mono);
+  font-size: 13px;
+  padding: 8px 24px;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.disclaimer-btn:hover {
+  background: rgba(255, 215, 0, 0.1);
+}
+
+/* ============ 动画效果 ============ */
+.fade-in {
+  animation: fadeIn 0.8s ease-in forwards;
+  opacity: 0;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.flash {
+  animation: flash-effect 0.3s ease-in-out 2;
+}
+
+@keyframes flash-effect {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
+
+/* ============ 响应式布局 ============ */
+@media (max-width: 1024px) {
+  .main-grid {
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: auto auto;
+    height: auto;
+  }
+
+  .panel:first-child {
+    grid-column: 1 / -1;
+  }
+}
+
+@media (max-width: 768px) {
+  .main-grid {
+    grid-template-columns: 1fr;
+    grid-template-rows: auto;
+    height: auto;
+  }
+
+  .header {
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .panel {
+    min-height: 300px;
+  }
+
+  .terminal {
+    min-height: 400px;
+  }
+}
+
+/* ============ 滚动条样式 ============ */
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--bg-primary);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--border-color);
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--text-green-dim);
+}

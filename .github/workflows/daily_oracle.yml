@@ -1,0 +1,41 @@
+name: Daily Oracle - HexaFin 每日卦象生成
+
+on:
+  schedule:
+    # UTC 22:00 = 美东 17:00 (EST) / 18:00 (EDT)，工作日执行
+    - cron: '0 22 * * 1-5'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  divine:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python 3.11
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install dependencies
+        run: pip install -r backend/requirements.txt
+
+      - name: Run HexaFin Engine
+        env:
+          FMP_API_KEY: ${{ secrets.FMP_API_KEY }}
+          LLM_API_KEY: ${{ secrets.LLM_API_KEY }}
+          LLM_PROVIDER: ${{ secrets.LLM_PROVIDER }}
+        run: python backend/hexafin_engine.py
+
+      - name: Commit and push results
+        run: |
+          git config user.name "HexaFin Oracle Bot"
+          git config user.email "hexafin-bot@users.noreply.github.com"
+          git add public/daily_result.json
+          git diff --staged --quiet || git commit -m "oracle: $(date -u +%Y-%m-%d) 每日卦象更新"
+          git push
