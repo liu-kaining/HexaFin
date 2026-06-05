@@ -34,8 +34,8 @@ def fetch_fmp_data(ticker: str, api_key: str) -> dict:
     if not quote_data:
         raise ValueError(f"No quote data returned for {ticker}")
 
-    close_price = quote_data[0].get("price", 0.0)
-    volume = quote_data[0].get("volume", 0)
+    close_price = quote_data[0].get("price", 0.0) or 0.0
+    volume = int(quote_data[0].get("volume") or 0)
 
     # 获取 RSI (14 日)
     rsi_url = f"{base_url}/technical_indicator/daily/{ticker}?period=14&type=rsi&apikey={api_key}"
@@ -326,10 +326,10 @@ def main():
     """主流程：读取标的 → 遍历执行 → 输出 JSON"""
     # 环境变量
     fmp_api_key = os.environ.get("FMP_API_KEY", "")
-    today = datetime.now(timezone.utc).strftime("%Y-%m-%d")
+    today = os.environ.get("ORACLE_DATE") or datetime.now(timezone.utc).strftime("%Y-%m-%d")
 
     # 读取标的列表
-    tickers_path = Path(__file__).parent / "tickers.txt"
+    tickers_path = Path(os.environ.get("TICKERS_FILE", "")) if os.environ.get("TICKERS_FILE") else Path(__file__).parent / "tickers.txt"
     with open(tickers_path, "r", encoding="utf-8") as f:
         tickers = [line.strip() for line in f if line.strip()]
 
@@ -388,8 +388,8 @@ def main():
         results.append(result)
         print(f"[INFO] {ticker} -> {hexagram['original']['name']}")
 
-    # 输出到 public/daily_result.json
-    output_path = Path(__file__).parent.parent / "public" / "daily_result.json"
+    # 输出 JSON（可通过 OUTPUT_PATH 覆盖）
+    output_path = Path(os.environ.get("OUTPUT_PATH", "")) if os.environ.get("OUTPUT_PATH") else Path(__file__).parent.parent / "public" / "daily_result.json"
     output_path.parent.mkdir(parents=True, exist_ok=True)
 
     with open(output_path, "w", encoding="utf-8") as f:
