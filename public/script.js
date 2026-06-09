@@ -1,23 +1,18 @@
 /**
- * HexaFin 前端交互逻辑
- * - 免责弹窗
- * - 数据加载与 Ticker 切换
- * - 推演日志打字机动画
- * - 卦象揭晓与 AI 神谕渲染
+ * HexaFin 前端交互
  */
-
 (function () {
   'use strict';
 
-  // ============ 全局状态 ============
+  const VALID_ACTIONS = new Set(['Strong Buy', 'Buy', 'Hold', 'Sell', 'Strong Sell']);
+  const YAO_NAMES = ['初爻', '二爻', '三爻', '四爻', '五爻', '上爻'];
+
   let allData = [];
-  let currentIndex = 0;
+  let currentIndex = -1;
   let animationTimer = null;
 
-  // ============ DOM 缓存 ============
   const $ = (id) => document.getElementById(id);
 
-  // ============ 初始化 ============
   document.addEventListener('DOMContentLoaded', init);
 
   function init() {
@@ -25,51 +20,55 @@
     loadData();
   }
 
-  // ============ 免责声明弹窗 ============
+  /* ---- 免责 ---- */
   function setupDisclaimer() {
     const overlay = $('disclaimer');
-    const btn = $('disclaimer-btn');
-
     if (localStorage.getItem('hexafin_disclaimer_accepted')) {
       overlay.classList.add('hidden');
       return;
     }
-
-    btn.addEventListener('click', () => {
+    $('disclaimer-btn').addEventListener('click', () => {
       localStorage.setItem('hexafin_disclaimer_accepted', '1');
       overlay.classList.add('hidden');
     });
   }
 
-  // ============ 数据加载 ============
+  /* ---- 数据加载 ---- */
   async function loadData() {
     try {
-      const resp = await fetch('daily_result.json');
-      if (!resp.ok) throw new Error(`HTTP ${resp.status}`);
-      allData = await resp.json();
-
-      if (allData.length === 0) {
-        showError('No data available');
+      const resp = await fetch('daily_result.json?_=' + Date.now());
+      if (!resp.ok) throw new Error('HTTP ' + resp.status);
+      const data = await resp.json();
+      if (!Array.isArray(data) || data.length === 0) {
+        showError('暂无卦象数据');
         return;
       }
-
+      allData = data;
       renderTickerSelector();
       switchTicker(0);
     } catch (err) {
-      showError(`Failed to load data: ${err.message}`);
+      showError('数据加载失败: ' + err.message);
     }
   }
 
   function showError(msg) {
+    const ph = $('terminal-placeholder');
+    if (ph) ph.remove();
     $('terminal-output').innerHTML =
-      `<div class="terminal-line visible" style="color:var(--text-red);">[ERROR] ${msg}</div>`;
+      '<div class="terminal-line visible" style="color:var(--text-red);">[ERROR] ' + esc(msg) + '</div>';
+    $('cursor').classList.add('hidden');
   }
 
-  // ============ Ticker 选择器 ============
+  function esc(s) {
+    const d = document.createElement('div');
+    d.textContent = s;
+    return d.innerHTML;
+  }
+
+  /* ---- Ticker 切换 ---- */
   function renderTickerSelector() {
     const container = $('ticker-selector');
     container.innerHTML = '';
-
     allData.forEach((item, idx) => {
       const btn = document.createElement('button');
       btn.className = 'ticker-btn' + (idx === 0 ? ' active' : '');
@@ -80,182 +79,238 @@
   }
 
   function switchTicker(idx) {
+    if (idx < 0 || idx >= allData.length) return;
     if (idx === currentIndex && animationTimer) return;
 
     currentIndex = idx;
+    stopAnimation();
 
-    // 更新按钮状态
     document.querySelectorAll('.ticker-btn').forEach((btn, i) => {
       btn.classList.toggle('active', i === idx);
     });
 
-    // 清除动画定时器
+    const data = allData[idx];
+    if (!validateData(data)) {
+      showError('数据结构异常: ' + data.ticker);
+      return;
+    }
+
+    renderFinancialData(data);
+    resetPanels();
+    startDivinationAnimation(data);
+  }
+
+  function stopAnimation() {
     if (animationTimer) {
       clearInterval(animationTimer);
       animationTimer = null;
     }
-
-    const data = allData[idx];
-
-    // 填充左栏
-    renderFinancialData(data);
-
-    // 重置中栏和右栏
-    $('terminal-output').innerHTML = '';
-    $('hexagram-display').style.display = 'none';
-    $('oracle-section').style.display = 'none';
-
-    // 启动推演动画
-    startDivinationAnimation(data);
   }
 
-  // ============ 左栏：金融数据填充 ============
+  function resetPanels() {
+    const output = $('terminal-output');
+    output.innerHTML = '';
+    $('cursor').classList.remove('hidden');
+
+    $('oracle-placeholder').hidden = false;
+    $('hexagram-display').hidden = true;
+    $('oracle-section').hidden = true;
+    $('oracle-section').classList.remove('fade-in');
+  }
+
+  function validateData(data) {
+    return data
+      && data.ticker
+      && data.fmp_data
+      && data.divination
+      && Array.isArray(data.divination.lines)
+      && Array.isArray(data.divination.logs)
+      && data.hexagram
+      && data.hexagram.original
+      && data.oracle;
+  }
+
+  /* ---- 左栏 ---- */
   function renderFinancialData(data) {
+    const fmp = data.fmp_data;
+    const isPlaceholder = fmp.close === 0 && fmp.volume === 0;
+
     $('val-ticker').textContent = data.ticker;
-    $('val-date').textContent = data.date;
-    $('val-close').textContent = `$${data.fmp_data.close.toLocaleString()}`;
-    $('val-volume').textContent = formatVolume(data.fmp_data.volume);
-    $('val-rsi').textContent = data.fmp_data.rsi.toFixed(2);
-    $('val-macd').textContent = data.fmp_data.macd;
-    $('val-seed').textContent = `0x${data.seed_hex}...`;
+    $('val-date').textContent = data.date || '—';
+
+    const closeEl = $('val-close');
+    if (isPlaceholder) {
+      closeEl.textContent = '— (无行情)';
+      closeEl.classList.add('placeholder-hint');
+    } else {
+      closeEl.textContent = '$' + formatPrice(fmp.close);
+      closeEl.classList.remove('placeholder-hint');
+    }
+
+    $('val-volume').textContent = isPlaceholder ? '—' : formatVolume(fmp.volume);
+
+    const rsiEl = $('val-rsi');
+    const rsi = Number(fmp.rsi);
+    rsiEl.textContent = isNaN(rsi) ? '—' : rsi.toFixed(2);
+    rsiEl.classList.remove('rsi-overbought', 'rsi-oversold');
+    if (!isNaN(rsi)) {
+      if (rsi >= 70) rsiEl.classList.add('rsi-overbought');
+      else if (rsi <= 30) rsiEl.classList.add('rsi-oversold');
+    }
+
+    $('val-macd').textContent = fmp.macd || '—';
+    $('val-seed').textContent = data.seed_hex ? '0x' + data.seed_hex : '—';
+  }
+
+  function formatPrice(n) {
+    return Number(n).toLocaleString('en-US', {
+      minimumFractionDigits: 2,
+      maximumFractionDigits: 2,
+    });
   }
 
   function formatVolume(vol) {
     if (vol >= 1e9) return (vol / 1e9).toFixed(2) + 'B';
     if (vol >= 1e6) return (vol / 1e6).toFixed(2) + 'M';
     if (vol >= 1e3) return (vol / 1e3).toFixed(2) + 'K';
-    return vol.toString();
+    return String(vol);
   }
 
-  // ============ 中栏：推演日志打字机动画 ============
+  function formatLevel(val) {
+    if (val === null || val === undefined || val === 'N/A') return '—';
+    const n = Number(val);
+    return isNaN(n) ? String(val) : '$' + formatPrice(n);
+  }
+
+  /* ---- 推演动画 ---- */
   function startDivinationAnimation(data) {
     const logs = data.divination.logs;
     const output = $('terminal-output');
-    const cursor = $('cursor');
+    const scrollEl = $('panel-terminal').querySelector('.terminal-body');
     let lineIdx = 0;
+    let lastYao = 0;
 
-    // 初始提示
-    const initLine = document.createElement('div');
-    initLine.className = 'terminal-line visible';
-    initLine.innerHTML = `<span style="color:var(--text-gold);">[INIT]</span> 大衍之数五十，其用四十有九...`;
-    output.appendChild(initLine);
+    $('oracle-placeholder').hidden = true;
+
+    appendLine(output, '<span style="color:var(--text-gold);">[INIT]</span> 大衍之数五十，其用四十有九……', true);
 
     animationTimer = setInterval(() => {
       if (lineIdx >= logs.length) {
-        clearInterval(animationTimer);
-        animationTimer = null;
-
-        // 动画完成，闪烁后揭晓卦象
-        cursor.style.display = 'none';
-        setTimeout(() => revealHexagram(data), 600);
+        stopAnimation();
+        $('cursor').classList.add('hidden');
+        setTimeout(() => revealHexagram(data), 500);
         return;
       }
 
       const log = logs[lineIdx];
-      const line = document.createElement('div');
-      line.className = 'terminal-line visible';
-      line.innerHTML = formatLogLine(log);
-      output.appendChild(line);
 
-      // 自动滚动
-      output.scrollTop = output.scrollHeight;
+      if (log.yao !== lastYao) {
+        if (lastYao > 0) {
+          const sep = document.createElement('div');
+          sep.className = 'terminal-line visible yao-separator';
+          sep.textContent = '— ' + YAO_NAMES[log.yao - 1] + ' —';
+          output.appendChild(sep);
+        }
+        lastYao = log.yao;
+      }
+
+      appendLine(output, formatLogLine(log), true);
+      scrollEl.scrollTop = scrollEl.scrollHeight;
       lineIdx++;
-    }, 280);
+    }, 260);
+  }
+
+  function appendLine(container, html, visible) {
+    const line = document.createElement('div');
+    line.className = 'terminal-line' + (visible ? ' visible' : '');
+    line.innerHTML = html;
+    container.appendChild(line);
+    return line;
   }
 
   function formatLogLine(log) {
     return (
-      `<span class="yao-label">[爻${log.yao}</span>` +
-      `<span class="change-label">|变${log.change}]</span> ` +
-      `<span class="value">左:${pad(log.left)} | 右:${pad(log.right)} | ` +
-      `余左:${log.left_rem} | 余右:${log.right_rem} | ` +
-      `移除:${pad(log.removed)} | 剩余:${pad(log.remaining)}</span>`
+      '<span class="yao-label">[' + YAO_NAMES[(log.yao || 1) - 1] + '</span>' +
+      '<span class="change-label"> · 变' + log.change + ']</span> ' +
+      '<span class="value">左' + pad(log.left) + ' 右' + pad(log.right) + ' · ' +
+      '余' + log.left_rem + '/' + log.right_rem + ' · ' +
+      '移' + pad(log.removed) + ' · 剩' + pad(log.remaining) + '</span>'
     );
   }
 
   function pad(n) {
-    return String(n).padStart(2, ' ');
+    return String(n).padStart(2, '\u00a0');
   }
 
-  // ============ 右栏：卦象揭晓 ============
+  /* ---- 卦象揭晓 ---- */
   function revealHexagram(data) {
     const display = $('hexagram-display');
-    const hexData = data.hexagram;
+    const hex = data.hexagram;
 
-    // 闪烁效果
-    display.style.display = 'block';
+    display.hidden = false;
     display.classList.add('flash');
-    setTimeout(() => display.classList.remove('flash'), 600);
+    setTimeout(() => display.classList.remove('flash'), 700);
 
-    // 填充卦象信息
-    $('hex-symbol').textContent = hexData.original.symbol;
-    $('hex-name').textContent = hexData.original.name;
-    $('hex-meaning').textContent = hexData.original.meaning;
+    $('hex-symbol').textContent = hex.original.symbol || '☷';
+    $('hex-name').textContent = hex.original.name || '未知卦';
+    $('hex-meaning').textContent = hex.original.meaning || '';
 
-    // 绘制六爻 ASCII
-    renderYaoLines(data.divination.lines, hexData.moving_lines);
-
-    // 变卦
-    if (hexData.changed) {
-      const changedEl = $('changed-hex');
-      changedEl.style.display = 'block';
-      $('changed-name').textContent =
-        `${hexData.changed.name} ${hexData.changed.symbol}`;
+    const moving = hex.moving_lines || [];
+    const badge = $('moving-badge');
+    if (moving.length > 0) {
+      badge.hidden = false;
+      badge.textContent = '动爻 · 第 ' + moving.join('、') + ' 爻';
     } else {
-      $('changed-hex').style.display = 'none';
+      badge.hidden = true;
     }
 
-    // 延迟显示 AI 神谕
-    setTimeout(() => revealOracle(data.oracle), 800);
+    renderYaoLines(data.divination.lines, moving);
+
+    const changedEl = $('changed-hex');
+    if (hex.changed) {
+      changedEl.hidden = false;
+      $('changed-name').textContent =
+        (hex.changed.name || '') + ' ' + (hex.changed.symbol || '');
+    } else {
+      changedEl.hidden = true;
+    }
+
+    setTimeout(() => revealOracle(data.oracle), 600);
   }
 
   function renderYaoLines(lines, movingLines) {
     const container = $('yao-lines');
     container.innerHTML = '';
 
-    // lines[0] 是初爻（底部），需要从下往上渲染
-    // flex-direction: column-reverse 已处理翻转
     lines.forEach((val, idx) => {
       const yaoEl = document.createElement('div');
       const isYang = val === 7 || val === 9;
       const isMoving = movingLines.includes(idx + 1);
 
       yaoEl.className = 'yao-line ' + (isYang ? 'yang' : 'yin') + (isMoving ? ' moving' : '');
-
-      if (isYang) {
-        yaoEl.textContent = '██████████';  // 阳爻：一条实线
-      } else {
-        yaoEl.textContent = '████  ████';  // 阴爻：中间断开
-      }
-
-      // 动爻标注
-      if (isMoving) {
-        yaoEl.title = `第${idx + 1}爻 [动] 值=${val}`;
-      } else {
-        yaoEl.title = `第${idx + 1}爻 值=${val}`;
-      }
-
+      yaoEl.textContent = isYang ? '██████████' : '████  ████';
+      yaoEl.title = YAO_NAMES[idx] + (isMoving ? ' [动]' : '') + ' 值=' + val;
       container.appendChild(yaoEl);
     });
   }
 
-  // ============ AI 神谕渲染 ============
+  /* ---- 神谕 ---- */
   function revealOracle(oracle) {
     const section = $('oracle-section');
-    section.style.display = 'block';
+    section.hidden = false;
+    section.classList.remove('fade-in');
+    void section.offsetWidth;
     section.classList.add('fade-in');
 
-    $('oracle-decryption').textContent = oracle.decryption;
-    $('oracle-mapping').textContent = oracle.market_mapping;
+    $('oracle-decryption').textContent = oracle.decryption || '';
+    $('oracle-mapping').textContent = oracle.market_mapping || '';
 
-    // 操作评级
-    const actionWrap = $('oracle-action-wrap');
-    const action = oracle.action;
-    const actionClass = action.toLowerCase().replace(' ', '-');
-    actionWrap.innerHTML = `<span class="oracle-action ${actionClass}">${action}</span>`;
+    const action = VALID_ACTIONS.has(oracle.action) ? oracle.action : 'Hold';
+    const actionClass = action.toLowerCase().replace(/\s+/g, '-');
+    $('oracle-action-wrap').innerHTML =
+      '<span class="oracle-action ' + esc(actionClass) + '">' + esc(action) + '</span>';
 
-    // 支撑/阻力
-    $('oracle-support').textContent = oracle.support_level;
-    $('oracle-resistance').textContent = oracle.resistance_level;
+    $('oracle-support').textContent = formatLevel(oracle.support_level);
+    $('oracle-resistance').textContent = formatLevel(oracle.resistance_level);
   }
 })();

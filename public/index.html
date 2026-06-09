@@ -3,129 +3,155 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>HexaFin | 赛博玄学金融预测系统</title>
+  <title>HexaFin | 赛博玄学金融预测</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-  <!-- 免责声明弹窗 -->
+  <!-- 免责声明 -->
   <div class="disclaimer-overlay" id="disclaimer">
     <div class="disclaimer-box">
-      <h2>⚠ 免责声明 / DISCLAIMER ⚠</h2>
+      <div class="disclaimer-badge">⚠ 免责结界</div>
+      <h2>HexaFin 赛博神谕</h2>
       <p>
-        本系统「HexaFin 赛博玄学金融预测」仅供<span class="warn">娱乐与学术研究</span>目的。
+        本系统所输出之买卖建议、点位预测及吉凶断言，皆由客观金融数据触发哈希算法，
+        辅以《周易》大衍筮法，并交由大语言模型生成。
       </p>
       <p>
-        系统通过周易大衍筮法结合市场数据生成卦象解读，<span class="warn">不构成任何投资建议</span>。
-        所有「操作评级」均为算法生成的玄学映射，与实际市场走势无必然关联。
+        本项目为<span class="warn">「东方神秘学 × 量化代码」</span>之行为艺术与技术实验。
+        <strong>THIS IS NOT FINANCIAL ADVICE.</strong>
       </p>
-      <p>
-        投资有风险，入市需谨慎。请勿依据本系统输出做出任何真实交易决策。
+      <p class="disclaimer-foot">
+        信卦者，盈亏自负；逆势者，造化弄人。
       </p>
       <button class="disclaimer-btn" id="disclaimer-btn">吾已知悉，入局观卦</button>
     </div>
   </div>
 
-  <!-- 页面头部 -->
   <header class="header">
-    <div>
+    <div class="header-brand">
       <div class="header-title">HEXAFIN</div>
-      <div class="header-subtitle">赛博玄学金融预测系统 v1.0 | SHA-256 种子化大衍筮法引擎</div>
+      <div class="header-subtitle">赛博玄学金融预测 · SHA-256 种子化大衍筮法</div>
     </div>
-    <div class="ticker-selector" id="ticker-selector">
-      <!-- 动态生成 ticker 按钮 -->
-    </div>
+    <div class="ticker-selector" id="ticker-selector"></div>
   </header>
 
-  <!-- 三栏主布局 -->
   <main class="main-grid">
 
-    <!-- 左栏：金融数据面板 -->
-    <section class="panel" id="panel-data">
-      <div class="panel-title">// 金融数据 Financial Data</div>
+    <!-- 左栏：金融数据 -->
+    <section class="panel panel-data" id="panel-data">
+      <div class="panel-title">
+        <span class="panel-tag">01</span>
+        金融数据
+      </div>
 
-      <div class="data-row">
-        <span class="data-label">Ticker</span>
-        <span class="data-value highlight" id="val-ticker">--</span>
+      <div class="data-group">
+        <div class="data-row">
+          <span class="data-label">Ticker</span>
+          <span class="data-value highlight" id="val-ticker">—</span>
+        </div>
+        <div class="data-row">
+          <span class="data-label">Date</span>
+          <span class="data-value" id="val-date">—</span>
+        </div>
       </div>
-      <div class="data-row">
-        <span class="data-label">Date</span>
-        <span class="data-value" id="val-date">--</span>
+
+      <div class="data-group">
+        <div class="data-group-label">行情</div>
+        <div class="data-row">
+          <span class="data-label">Close</span>
+          <span class="data-value" id="val-close">—</span>
+        </div>
+        <div class="data-row">
+          <span class="data-label">Volume</span>
+          <span class="data-value" id="val-volume">—</span>
+        </div>
       </div>
-      <div class="data-row">
-        <span class="data-label">Close</span>
-        <span class="data-value" id="val-close">--</span>
-      </div>
-      <div class="data-row">
-        <span class="data-label">Volume</span>
-        <span class="data-value" id="val-volume">--</span>
-      </div>
-      <div class="data-row">
-        <span class="data-label">RSI(14)</span>
-        <span class="data-value" id="val-rsi">--</span>
-      </div>
-      <div class="data-row">
-        <span class="data-label">MACD</span>
-        <span class="data-value" id="val-macd">--</span>
+
+      <div class="data-group">
+        <div class="data-group-label">技术指标</div>
+        <div class="data-row">
+          <span class="data-label">RSI (14)</span>
+          <span class="data-value" id="val-rsi">—</span>
+        </div>
+        <div class="data-row data-row-stack">
+          <span class="data-label">MACD</span>
+          <span class="data-value data-value-wrap" id="val-macd">—</span>
+        </div>
       </div>
 
       <div class="seed-display">
-        <div class="data-label" style="margin-bottom:4px;">SHA-256 Seed:</div>
-        <div id="val-seed">--</div>
+        <div class="seed-label">SHA-256 Seed</div>
+        <code class="seed-value" id="val-seed">—</code>
       </div>
     </section>
 
-    <!-- 中栏：推演日志终端 -->
-    <section class="panel terminal" id="panel-terminal">
-      <div class="panel-title">// 大衍筮法推演终端 Divination Terminal</div>
-      <div id="terminal-output"></div>
-      <span class="terminal-cursor" id="cursor"></span>
+    <!-- 中栏：推演终端 -->
+    <section class="panel panel-terminal" id="panel-terminal">
+      <div class="panel-title">
+        <span class="panel-tag">02</span>
+        大衍筮法推演
+      </div>
+      <div class="terminal-body">
+        <div class="terminal-output" id="terminal-output">
+          <div class="terminal-placeholder" id="terminal-placeholder">
+            <span class="loading-dots">正在连接神谕数据</span>
+          </div>
+        </div>
+        <span class="terminal-cursor" id="cursor"></span>
+      </div>
     </section>
 
-    <!-- 右栏：卦象 + AI 神谕 -->
-    <section class="panel" id="panel-oracle">
-      <div class="panel-title">// 卦象神谕 Oracle</div>
+    <!-- 右栏：卦象神谕 -->
+    <section class="panel panel-oracle" id="panel-oracle">
+      <div class="panel-title">
+        <span class="panel-tag">03</span>
+        卦象神谕
+      </div>
 
-      <div class="hexagram-display" id="hexagram-display" style="display:none;">
+      <div class="oracle-placeholder" id="oracle-placeholder">
+        <div class="placeholder-icon">☯</div>
+        <p>推演完成后，卦象与神谕将在此显现</p>
+      </div>
+
+      <div class="hexagram-display" id="hexagram-display" hidden>
         <div class="hexagram-symbol" id="hex-symbol"></div>
         <div class="hexagram-name" id="hex-name"></div>
         <div class="hexagram-meaning" id="hex-meaning"></div>
 
-        <div class="yao-lines" id="yao-lines">
-          <!-- 六爻 ASCII -->
-        </div>
+        <div class="moving-badge" id="moving-badge" hidden></div>
 
-        <div class="changed-hexagram" id="changed-hex" style="display:none;">
-          动爻变化 → <span class="name" id="changed-name"></span>
+        <div class="yao-lines" id="yao-lines"></div>
+
+        <div class="changed-hexagram" id="changed-hex" hidden>
+          <span class="changed-label">之卦</span>
+          <span class="name" id="changed-name"></span>
         </div>
       </div>
 
-      <div class="oracle-section" id="oracle-section" style="display:none;">
+      <div class="oracle-section" id="oracle-section" hidden>
         <div class="oracle-block">
           <div class="oracle-label">象辞破译</div>
           <div class="oracle-text" id="oracle-decryption"></div>
         </div>
-
         <div class="oracle-block">
           <div class="oracle-label">盘面映射</div>
           <div class="oracle-text" id="oracle-mapping"></div>
         </div>
-
-        <div class="oracle-block">
+        <div class="oracle-block oracle-action-block">
           <div class="oracle-label">操作评级</div>
           <div id="oracle-action-wrap"></div>
         </div>
-
         <div class="oracle-block">
           <div class="oracle-label">关键位</div>
           <div class="oracle-levels">
             <div class="level-item">
-              <span class="level-label">支撑:</span>
-              <span class="level-value support" id="oracle-support"></span>
+              <span class="level-label">支撑</span>
+              <span class="level-value support" id="oracle-support">—</span>
             </div>
             <div class="level-item">
-              <span class="level-label">阻力:</span>
-              <span class="level-value resistance" id="oracle-resistance"></span>
+              <span class="level-label">阻力</span>
+              <span class="level-value resistance" id="oracle-resistance">—</span>
             </div>
           </div>
         </div>
@@ -133,6 +159,12 @@
     </section>
 
   </main>
+
+  <footer class="footer">
+    <span>HexaFin · 赛博玄学实验项目</span>
+    <span class="footer-sep">|</span>
+    <span>非投资建议 · Not Financial Advice</span>
+  </footer>
 
   <script src="script.js"></script>
 </body>

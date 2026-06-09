@@ -12,7 +12,56 @@ import sys
 from datetime import datetime, timezone
 from pathlib import Path
 
+import re
+
 import requests
+
+VALID_ACTIONS = {"Strong Buy", "Buy", "Hold", "Sell", "Strong Sell"}
+LINE_TO_BINARY = {6: "0", 7: "1", 8: "0", 9: "1"}
+
+
+def lines_to_binary(lines: list) -> str:
+    """爻值序列转二进制字符串（初爻在左）。"""
+    return "".join(LINE_TO_BINARY[line] for line in lines)
+
+
+def _extract_json(content: str) -> dict:
+    """从 LLM 返回文本中提取 JSON 对象。"""
+    content = content.strip()
+    if content.startswith("```"):
+        content = re.sub(r"^```(?:json)?\s*", "", content)
+        content = re.sub(r"\s*```$", "", content)
+    start = content.find("{")
+    end = content.rfind("}")
+    if start == -1 or end == -1:
+        raise ValueError("No JSON object found in LLM response")
+    return json.loads(content[start : end + 1])
+
+
+def _normalize_oracle(raw: dict, hexagram_data: dict, ticker: str) -> dict:
+    """校验并规范化 AI 解读字段。"""
+    action = raw.get("action", "Hold")
+    if action not in VALID_ACTIONS:
+        action = "Hold"
+
+    def _level(val):
+        if val is None or val == "N/A":
+            return "N/A"
+        try:
+            return round(float(val), 2)
+        except (TypeError, ValueError):
+            return "N/A"
+
+    return {
+        "decryption": str(raw.get("decryption", "")).strip()
+        or f"「{hexagram_data['original']['name']}」卦象显现，玄机待参。",
+        "market_mapping": str(raw.get("market_mapping", "")).strip()
+        or f"{ticker} 盘面与卦气共振，宜静观其变。",
+        "action": action,
+        "support_level": _level(raw.get("support_level")),
+        "resistance_level": _level(raw.get("resistance_level")),
+    }
+
 
 # ============================================================
 # 4.1 FMP 数据获取模块
@@ -31,6 +80,8 @@ def fetch_fmp_data(ticker: str, api_key: str) -> dict:
     quote_resp.raise_for_status()
     quote_data = quote_resp.json()
 
+    if isinstance(quote_data, dict):
+        raise ValueError(quote_data.get("Error Message", f"Invalid quote response for {ticker}"))
     if not quote_data:
         raise ValueError(f"No quote data returned for {ticker}")
 
@@ -42,7 +93,10 @@ def fetch_fmp_data(ticker: str, api_key: str) -> dict:
     rsi_resp = requests.get(rsi_url, timeout=15)
     rsi_resp.raise_for_status()
     rsi_data = rsi_resp.json()
-    rsi_value = rsi_data[0].get("rsi", 50.0) if rsi_data else 50.0
+    if isinstance(rsi_data, list) and rsi_data:
+        rsi_value = rsi_data[0].get("rsi") or 50.0
+    else:
+        rsi_value = 50.0
 
     # 获取 MACD
     macd_url = f"{base_url}/technical_indicator/daily/{ticker}?period=12&type=macd&apikey={api_key}"
@@ -50,10 +104,17 @@ def fetch_fmp_data(ticker: str, api_key: str) -> dict:
     macd_resp.raise_for_status()
     macd_data = macd_resp.json()
 
-    if macd_data:
-        macd_val = macd_data[0].get("macd", 0.0)
-        signal_val = macd_data[0].get("macd_signal", 0.0)
-        macd_str = f"MACD={macd_val:.4f}, Signal={signal_val:.4f}"
+    if isinstance(macd_data, list) and macd_data:
+        row = macd_data[0]
+        macd_val = row.get("macd") or 0.0
+        signal_val = row.get("macdSignal") or row.get("signal") or row.get("macd_signal") or 0.0
+        if macd_val > signal_val:
+            trend = "Golden Cross"
+        elif macd_val < signal_val:
+            trend = "Death Cross"
+        else:
+            trend = "Neutral"
+        macd_str = f"MACD={macd_val:.4f}, Signal={signal_val:.4f} ({trend})"
     else:
         macd_str = "MACD=N/A"
 
@@ -150,9 +211,7 @@ def lookup_hexagram(lines: list) -> dict:
     with open(data_path, "r", encoding="utf-8") as f:
         hexagram_data = json.load(f)
 
-    # 爻值映射二进制（本卦）
-    value_to_binary = {6: "0", 7: "1", 8: "0", 9: "1"}
-    binary_str = "".join(value_to_binary[line] for line in lines)
+    binary_str = lines_to_binary(lines)
 
     # 查本卦
     original = hexagram_data.get(binary_str, {
@@ -234,9 +293,10 @@ MACD: {fmp_data['macd']}
 
     try:
         if provider == "anthropic":
-            return _call_anthropic(api_key, user_message)
+            raw = _call_anthropic(api_key, user_message)
         else:
-            return _call_openai(api_key, user_message)
+            raw = _call_openai(api_key, user_message)
+        return _normalize_oracle(raw, hexagram_data, ticker)
     except Exception as e:
         print(f"[WARNING] AI oracle failed for {ticker}: {e}", file=sys.stderr)
         return _fallback_oracle(hexagram_data, ticker)
@@ -257,12 +317,7 @@ def _call_openai(api_key: str, user_message: str) -> dict:
         max_tokens=500,
     )
     content = response.choices[0].message.content.strip()
-    # 尝试提取 JSON
-    if content.startswith("```"):
-        content = content.split("```")[1]
-        if content.startswith("json"):
-            content = content[4:]
-    return json.loads(content)
+    return _extract_json(content)
 
 
 def _call_anthropic(api_key: str, user_message: str) -> dict:
@@ -279,11 +334,7 @@ def _call_anthropic(api_key: str, user_message: str) -> dict:
         ],
     )
     content = response.content[0].text.strip()
-    if content.startswith("```"):
-        content = content.split("```")[1]
-        if content.startswith("json"):
-            content = content[4:]
-    return json.loads(content)
+    return _extract_json(content)
 
 
 def _fallback_oracle(hexagram_data: dict, ticker: str) -> dict:
@@ -361,6 +412,8 @@ def main():
 
         # Step 4: 查询卦象
         hexagram = lookup_hexagram(lines)
+        if hexagram["binary"] != lines_to_binary(lines):
+            raise RuntimeError(f"Hexagram binary mismatch for {ticker}")
 
         # Step 5: AI 解卦
         oracle = get_ai_oracle(hexagram, fmp_data, ticker)
