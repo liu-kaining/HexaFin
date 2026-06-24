@@ -1,8 +1,8 @@
 [
   {
     "ticker": "TSLA",
-    "date": "2026-06-23",
-    "seed_hex": "f834b7a03ca9a2ed",
+    "date": "2026-06-24",
+    "seed_hex": "6b5ac5b291ba8590",
     "fmp_data": {
       "close": 0.0,
       "volume": 0,
@@ -12,116 +12,56 @@
     "divination": {
       "lines": [
         8,
-        8,
-        6,
-        8,
+        9,
+        9,
         7,
-        7
+        8,
+        8
       ],
-      "binary": "000011",
+      "binary": "011100",
       "logs": [
         {
           "yao": 1,
           "change": 1,
-          "left": 14,
-          "right": 34,
-          "left_rem": 2,
-          "right_rem": 2,
-          "removed": 5,
-          "remaining": 44
-        },
-        {
-          "yao": 1,
-          "change": 2,
-          "left": 1,
-          "right": 42,
+          "left": 25,
+          "right": 23,
           "left_rem": 1,
-          "right_rem": 2,
-          "removed": 4,
-          "remaining": 40
-        },
-        {
-          "yao": 1,
-          "change": 3,
-          "left": 24,
-          "right": 15,
-          "left_rem": 4,
           "right_rem": 3,
-          "removed": 8,
-          "remaining": 32
-        },
-        {
-          "yao": 2,
-          "change": 1,
-          "left": 46,
-          "right": 2,
-          "left_rem": 2,
-          "right_rem": 2,
           "removed": 5,
           "remaining": 44
         },
         {
-          "yao": 2,
+          "yao": 1,
           "change": 2,
-          "left": 35,
-          "right": 8,
-          "left_rem": 3,
-          "right_rem": 4,
-          "removed": 8,
-          "remaining": 36
-        },
-        {
-          "yao": 2,
-          "change": 3,
-          "left": 22,
-          "right": 13,
+          "left": 18,
+          "right": 25,
           "left_rem": 2,
           "right_rem": 1,
           "removed": 4,
-          "remaining": 32
-        },
-        {
-          "yao": 3,
-          "change": 1,
-          "left": 8,
-          "right": 40,
-          "left_rem": 4,
-          "right_rem": 4,
-          "removed": 9,
           "remaining": 40
         },
         {
-          "yao": 3,
-          "change": 2,
-          "left": 12,
-          "right": 27,
+          "yao": 1,
+          "change": 3,
+          "left": 16,
+          "right": 23,
           "left_rem": 4,
           "right_rem": 3,
           "removed": 8,
           "remaining": 32
         },
         {
-          "yao": 3,
-          "change": 3,
-          "left": 31,
-          "right": 0,
-          "left_rem": 3,
-          "right_rem": 4,
-          "removed": 8,
-          "remaining": 24
-        },
-        {
-          "yao": 4,
+          "yao": 2,
           "change": 1,
-          "left": 41,
-          "right": 7,
+          "left": 17,
+          "right": 31,
           "left_rem": 1,
           "right_rem": 3,
           "removed": 5,
           "remaining": 44
         },
         {
-          "yao": 4,
+          "yao": 2,
           "change": 2,
           "left": 5,
           "right": 38,
@@ -131,380 +71,47 @@
           "remaining": 40
         },
         {
-          "yao": 4,
-          "change": 3,
-          "left": 23,
-          "right": 16,
-          "left_rem": 3,
-          "right_rem": 4,
-          "removed": 8,
-          "remaining": 32
-        },
-        {
-          "yao": 5,
-          "change": 1,
-          "left": 27,
-          "right": 21,
-          "left_rem": 3,
-          "right_rem": 1,
-          "removed": 5,
-          "remaining": 44
-        },
-        {
-          "yao": 5,
-          "change": 2,
-          "left": 16,
-          "right": 27,
-          "left_rem": 4,
-          "right_rem": 3,
-          "removed": 8,
-          "remaining": 36
-        },
-        {
-          "yao": 5,
-          "change": 3,
-          "left": 20,
-          "right": 15,
-          "left_rem": 4,
-          "right_rem": 3,
-          "removed": 8,
-          "remaining": 28
-        },
-        {
-          "yao": 6,
-          "change": 1,
-          "left": 29,
-          "right": 19,
-          "left_rem": 1,
-          "right_rem": 3,
-          "removed": 5,
-          "remaining": 44
-        },
-        {
-          "yao": 6,
-          "change": 2,
-          "left": 4,
-          "right": 39,
-          "left_rem": 4,
-          "right_rem": 3,
-          "removed": 8,
-          "remaining": 36
-        },
-        {
-          "yao": 6,
-          "change": 3,
-          "left": 12,
-          "right": 23,
-          "left_rem": 4,
-          "right_rem": 3,
-          "removed": 8,
-          "remaining": 28
-        }
-      ]
-    },
-    "hexagram": {
-      "original": {
-        "name": "风地观",
-        "symbol": "䷓",
-        "meaning": "盥而不荐，有孚颙若。"
-      },
-      "moving_lines": [
-        3
-      ],
-      "changed": {
-        "name": "风山渐",
-        "symbol": "䷴",
-        "meaning": "女归吉，利贞。"
-      }
-    },
-    "oracle": {
-      "decryption": "天机显示「风地观」之象，盥而不荐，有孚颙若。……卦气流转，数据共振于链上。",
-      "market_mapping": "TSLA 当前卦象映射盘面，阴阳交替间暗藏玄机。技术面需结合量能验证趋势方向。",
-      "action": "Hold",
-      "support_level": "N/A",
-      "resistance_level": "N/A"
-    }
-  },
-  {
-    "ticker": "QQQ",
-    "date": "2026-06-23",
-    "seed_hex": "46398a0cb2be2f08",
-    "fmp_data": {
-      "close": 0.0,
-      "volume": 0,
-      "rsi": 50.0,
-      "macd": "N/A"
-    },
-    "divination": {
-      "lines": [
-        7,
-        9,
-        9,
-        7,
-        8,
-        8
-      ],
-      "binary": "111100",
-      "logs": [
-        {
-          "yao": 1,
-          "change": 1,
-          "left": 1,
-          "right": 47,
-          "left_rem": 1,
-          "right_rem": 3,
-          "removed": 5,
-          "remaining": 44
-        },
-        {
-          "yao": 1,
-          "change": 2,
-          "left": 40,
-          "right": 3,
-          "left_rem": 4,
-          "right_rem": 3,
-          "removed": 8,
-          "remaining": 36
-        },
-        {
-          "yao": 1,
-          "change": 3,
-          "left": 12,
-          "right": 23,
-          "left_rem": 4,
-          "right_rem": 3,
-          "removed": 8,
-          "remaining": 28
-        },
-        {
           "yao": 2,
-          "change": 1,
-          "left": 19,
-          "right": 29,
-          "left_rem": 3,
-          "right_rem": 1,
-          "removed": 5,
-          "remaining": 44
-        },
-        {
-          "yao": 2,
-          "change": 2,
-          "left": 42,
-          "right": 1,
+          "change": 3,
+          "left": 14,
+          "right": 25,
           "left_rem": 2,
           "right_rem": 1,
+          "removed": 4,
+          "remaining": 36
+        },
+        {
+          "yao": 3,
+          "change": 1,
+          "left": 34,
+          "right": 14,
+          "left_rem": 2,
+          "right_rem": 2,
+          "removed": 5,
+          "remaining": 44
+        },
+        {
+          "yao": 3,
+          "change": 2,
+          "left": 17,
+          "right": 26,
+          "left_rem": 1,
+          "right_rem": 2,
           "removed": 4,
           "remaining": 40
         },
         {
-          "yao": 2,
+          "yao": 3,
           "change": 3,
-          "left": 6,
-          "right": 33,
-          "left_rem": 2,
-          "right_rem": 1,
-          "removed": 4,
-          "remaining": 36
-        },
-        {
-          "yao": 3,
-          "change": 1,
-          "left": 23,
-          "right": 25,
-          "left_rem": 3,
-          "right_rem": 1,
-          "removed": 5,
-          "remaining": 44
-        },
-        {
-          "yao": 3,
-          "change": 2,
-          "left": 13,
+          "left": 9,
           "right": 30,
           "left_rem": 1,
           "right_rem": 2,
           "removed": 4,
-          "remaining": 40
-        },
-        {
-          "yao": 3,
-          "change": 3,
-          "left": 34,
-          "right": 5,
-          "left_rem": 2,
-          "right_rem": 1,
-          "removed": 4,
           "remaining": 36
         },
         {
           "yao": 4,
-          "change": 1,
-          "left": 6,
-          "right": 42,
-          "left_rem": 2,
-          "right_rem": 2,
-          "removed": 5,
-          "remaining": 44
-        },
-        {
-          "yao": 4,
-          "change": 2,
-          "left": 19,
-          "right": 24,
-          "left_rem": 3,
-          "right_rem": 4,
-          "removed": 8,
-          "remaining": 36
-        },
-        {
-          "yao": 4,
-          "change": 3,
-          "left": 24,
-          "right": 11,
-          "left_rem": 4,
-          "right_rem": 3,
-          "removed": 8,
-          "remaining": 28
-        },
-        {
-          "yao": 5,
-          "change": 1,
-          "left": 36,
-          "right": 12,
-          "left_rem": 4,
-          "right_rem": 4,
-          "removed": 9,
-          "remaining": 40
-        },
-        {
-          "yao": 5,
-          "change": 2,
-          "left": 33,
-          "right": 6,
-          "left_rem": 1,
-          "right_rem": 2,
-          "removed": 4,
-          "remaining": 36
-        },
-        {
-          "yao": 5,
-          "change": 3,
-          "left": 10,
-          "right": 25,
-          "left_rem": 2,
-          "right_rem": 1,
-          "removed": 4,
-          "remaining": 32
-        },
-        {
-          "yao": 6,
-          "change": 1,
-          "left": 9,
-          "right": 39,
-          "left_rem": 1,
-          "right_rem": 3,
-          "removed": 5,
-          "remaining": 44
-        },
-        {
-          "yao": 6,
-          "change": 2,
-          "left": 33,
-          "right": 10,
-          "left_rem": 1,
-          "right_rem": 2,
-          "removed": 4,
-          "remaining": 40
-        },
-        {
-          "yao": 6,
-          "change": 3,
-          "left": 16,
-          "right": 23,
-          "left_rem": 4,
-          "right_rem": 3,
-          "removed": 8,
-          "remaining": 32
-        }
-      ]
-    },
-    "hexagram": {
-      "original": {
-        "name": "雷天大壮",
-        "symbol": "䷡",
-        "meaning": "利贞。"
-      },
-      "moving_lines": [
-        2,
-        3
-      ],
-      "changed": {
-        "name": "震为雷",
-        "symbol": "䷲",
-        "meaning": "亨。震来虩虩，笑言哑哑。震惊百里，不丧匕鬯。"
-      }
-    },
-    "oracle": {
-      "decryption": "天机显示「雷天大壮」之象，利贞。……卦气流转，数据共振于链上。",
-      "market_mapping": "QQQ 当前卦象映射盘面，阴阳交替间暗藏玄机。技术面需结合量能验证趋势方向。",
-      "action": "Hold",
-      "support_level": "N/A",
-      "resistance_level": "N/A"
-    }
-  },
-  {
-    "ticker": "NVDA",
-    "date": "2026-06-23",
-    "seed_hex": "9a845f7d63888016",
-    "fmp_data": {
-      "close": 0.0,
-      "volume": 0,
-      "rsi": 50.0,
-      "macd": "N/A"
-    },
-    "divination": {
-      "lines": [
-        9,
-        6,
-        9,
-        9,
-        9,
-        7
-      ],
-      "binary": "101111",
-      "logs": [
-        {
-          "yao": 1,
-          "change": 1,
-          "left": 22,
-          "right": 26,
-          "left_rem": 2,
-          "right_rem": 2,
-          "removed": 5,
-          "remaining": 44
-        },
-        {
-          "yao": 1,
-          "change": 2,
-          "left": 33,
-          "right": 10,
-          "left_rem": 1,
-          "right_rem": 2,
-          "removed": 4,
-          "remaining": 40
-        },
-        {
-          "yao": 1,
-          "change": 3,
-          "left": 34,
-          "right": 5,
-          "left_rem": 2,
-          "right_rem": 1,
-          "removed": 4,
-          "remaining": 36
-        },
-        {
-          "yao": 2,
           "change": 1,
           "left": 48,
           "right": 0,
@@ -514,57 +121,194 @@
           "remaining": 40
         },
         {
-          "yao": 2,
+          "yao": 4,
           "change": 2,
-          "left": 35,
-          "right": 4,
+          "left": 15,
+          "right": 24,
           "left_rem": 3,
           "right_rem": 4,
           "removed": 8,
           "remaining": 32
         },
         {
-          "yao": 2,
+          "yao": 4,
           "change": 3,
-          "left": 19,
-          "right": 12,
+          "left": 17,
+          "right": 14,
+          "left_rem": 1,
+          "right_rem": 2,
+          "removed": 4,
+          "remaining": 28
+        },
+        {
+          "yao": 5,
+          "change": 1,
+          "left": 21,
+          "right": 27,
+          "left_rem": 1,
+          "right_rem": 3,
+          "removed": 5,
+          "remaining": 44
+        },
+        {
+          "yao": 5,
+          "change": 2,
+          "left": 29,
+          "right": 14,
+          "left_rem": 1,
+          "right_rem": 2,
+          "removed": 4,
+          "remaining": 40
+        },
+        {
+          "yao": 5,
+          "change": 3,
+          "left": 31,
+          "right": 8,
           "left_rem": 3,
           "right_rem": 4,
           "removed": 8,
-          "remaining": 24
+          "remaining": 32
         },
         {
-          "yao": 3,
+          "yao": 6,
           "change": 1,
-          "left": 42,
-          "right": 6,
+          "left": 22,
+          "right": 26,
           "left_rem": 2,
           "right_rem": 2,
           "removed": 5,
           "remaining": 44
         },
         {
-          "yao": 3,
+          "yao": 6,
           "change": 2,
-          "left": 42,
-          "right": 1,
+          "left": 22,
+          "right": 21,
           "left_rem": 2,
           "right_rem": 1,
           "removed": 4,
           "remaining": 40
         },
         {
-          "yao": 3,
+          "yao": 6,
           "change": 3,
-          "left": 37,
-          "right": 2,
+          "left": 39,
+          "right": 0,
+          "left_rem": 3,
+          "right_rem": 4,
+          "removed": 8,
+          "remaining": 32
+        }
+      ]
+    },
+    "hexagram": {
+      "original": {
+        "name": "雷风恒",
+        "symbol": "䷟",
+        "meaning": "亨，无咎，利贞，利有攸往。"
+      },
+      "moving_lines": [
+        2,
+        3
+      ],
+      "changed": {
+        "name": "雷地豫",
+        "symbol": "䷏",
+        "meaning": "利建侯行师。"
+      }
+    },
+    "oracle": {
+      "decryption": "天机显示「雷风恒」之象，亨，无咎，利贞，利有攸往。……卦气流转，数据共振于链上。",
+      "market_mapping": "TSLA 当前卦象映射盘面，阴阳交替间暗藏玄机。技术面需结合量能验证趋势方向。",
+      "action": "Hold",
+      "support_level": "N/A",
+      "resistance_level": "N/A"
+    }
+  },
+  {
+    "ticker": "QQQ",
+    "date": "2026-06-24",
+    "seed_hex": "5ccb0ed6cbae7c60",
+    "fmp_data": {
+      "close": 0.0,
+      "volume": 0,
+      "rsi": 50.0,
+      "macd": "N/A"
+    },
+    "divination": {
+      "lines": [
+        7,
+        8,
+        7,
+        9,
+        9,
+        8
+      ],
+      "binary": "101110",
+      "logs": [
+        {
+          "yao": 1,
+          "change": 1,
+          "left": 45,
+          "right": 3,
+          "left_rem": 1,
+          "right_rem": 3,
+          "removed": 5,
+          "remaining": 44
+        },
+        {
+          "yao": 1,
+          "change": 2,
+          "left": 23,
+          "right": 20,
+          "left_rem": 3,
+          "right_rem": 4,
+          "removed": 8,
+          "remaining": 36
+        },
+        {
+          "yao": 1,
+          "change": 3,
+          "left": 27,
+          "right": 8,
+          "left_rem": 3,
+          "right_rem": 4,
+          "removed": 8,
+          "remaining": 28
+        },
+        {
+          "yao": 2,
+          "change": 1,
+          "left": 44,
+          "right": 4,
+          "left_rem": 4,
+          "right_rem": 4,
+          "removed": 9,
+          "remaining": 40
+        },
+        {
+          "yao": 2,
+          "change": 2,
+          "left": 13,
+          "right": 26,
           "left_rem": 1,
           "right_rem": 2,
           "removed": 4,
           "remaining": 36
         },
         {
-          "yao": 4,
+          "yao": 2,
+          "change": 3,
+          "left": 18,
+          "right": 17,
+          "left_rem": 2,
+          "right_rem": 1,
+          "removed": 4,
+          "remaining": 32
+        },
+        {
+          "yao": 3,
           "change": 1,
           "left": 2,
           "right": 46,
@@ -574,17 +318,77 @@
           "remaining": 44
         },
         {
+          "yao": 3,
+          "change": 2,
+          "left": 8,
+          "right": 35,
+          "left_rem": 4,
+          "right_rem": 3,
+          "removed": 8,
+          "remaining": 36
+        },
+        {
+          "yao": 3,
+          "change": 3,
+          "left": 7,
+          "right": 28,
+          "left_rem": 3,
+          "right_rem": 4,
+          "removed": 8,
+          "remaining": 28
+        },
+        {
+          "yao": 4,
+          "change": 1,
+          "left": 15,
+          "right": 33,
+          "left_rem": 3,
+          "right_rem": 1,
+          "removed": 5,
+          "remaining": 44
+        },
+        {
           "yao": 4,
           "change": 2,
-          "left": 38,
-          "right": 5,
-          "left_rem": 2,
-          "right_rem": 1,
+          "left": 17,
+          "right": 26,
+          "left_rem": 1,
+          "right_rem": 2,
           "removed": 4,
           "remaining": 40
         },
         {
           "yao": 4,
+          "change": 3,
+          "left": 1,
+          "right": 38,
+          "left_rem": 1,
+          "right_rem": 2,
+          "removed": 4,
+          "remaining": 36
+        },
+        {
+          "yao": 5,
+          "change": 1,
+          "left": 34,
+          "right": 14,
+          "left_rem": 2,
+          "right_rem": 2,
+          "removed": 5,
+          "remaining": 44
+        },
+        {
+          "yao": 5,
+          "change": 2,
+          "left": 37,
+          "right": 6,
+          "left_rem": 1,
+          "right_rem": 2,
+          "removed": 4,
+          "remaining": 40
+        },
+        {
+          "yao": 5,
           "change": 3,
           "left": 38,
           "right": 1,
@@ -594,30 +398,20 @@
           "remaining": 36
         },
         {
-          "yao": 5,
+          "yao": 6,
           "change": 1,
-          "left": 37,
-          "right": 11,
-          "left_rem": 1,
-          "right_rem": 3,
-          "removed": 5,
-          "remaining": 44
-        },
-        {
-          "yao": 5,
-          "change": 2,
-          "left": 25,
-          "right": 18,
-          "left_rem": 1,
-          "right_rem": 2,
-          "removed": 4,
+          "left": 48,
+          "right": 0,
+          "left_rem": 4,
+          "right_rem": 4,
+          "removed": 9,
           "remaining": 40
         },
         {
-          "yao": 5,
-          "change": 3,
-          "left": 25,
-          "right": 14,
+          "yao": 6,
+          "change": 2,
+          "left": 21,
+          "right": 18,
           "left_rem": 1,
           "right_rem": 2,
           "removed": 4,
@@ -625,9 +419,216 @@
         },
         {
           "yao": 6,
+          "change": 3,
+          "left": 2,
+          "right": 33,
+          "left_rem": 2,
+          "right_rem": 1,
+          "removed": 4,
+          "remaining": 32
+        }
+      ]
+    },
+    "hexagram": {
+      "original": {
+        "name": "泽火革",
+        "symbol": "䷰",
+        "meaning": "己日乃孚，元亨利贞，悔亡。"
+      },
+      "moving_lines": [
+        4,
+        5
+      ],
+      "changed": {
+        "name": "地火明夷",
+        "symbol": "䷣",
+        "meaning": "利艰贞。"
+      }
+    },
+    "oracle": {
+      "decryption": "天机显示「泽火革」之象，己日乃孚，元亨利贞，悔亡。……卦气流转，数据共振于链上。",
+      "market_mapping": "QQQ 当前卦象映射盘面，阴阳交替间暗藏玄机。技术面需结合量能验证趋势方向。",
+      "action": "Hold",
+      "support_level": "N/A",
+      "resistance_level": "N/A"
+    }
+  },
+  {
+    "ticker": "NVDA",
+    "date": "2026-06-24",
+    "seed_hex": "bf08698290f6d6a4",
+    "fmp_data": {
+      "close": 0.0,
+      "volume": 0,
+      "rsi": 50.0,
+      "macd": "N/A"
+    },
+    "divination": {
+      "lines": [
+        8,
+        8,
+        6,
+        8,
+        8,
+        8
+      ],
+      "binary": "000000",
+      "logs": [
+        {
+          "yao": 1,
           "change": 1,
-          "left": 9,
-          "right": 39,
+          "left": 17,
+          "right": 31,
+          "left_rem": 1,
+          "right_rem": 3,
+          "removed": 5,
+          "remaining": 44
+        },
+        {
+          "yao": 1,
+          "change": 2,
+          "left": 39,
+          "right": 4,
+          "left_rem": 3,
+          "right_rem": 4,
+          "removed": 8,
+          "remaining": 36
+        },
+        {
+          "yao": 1,
+          "change": 3,
+          "left": 14,
+          "right": 21,
+          "left_rem": 2,
+          "right_rem": 1,
+          "removed": 4,
+          "remaining": 32
+        },
+        {
+          "yao": 2,
+          "change": 1,
+          "left": 4,
+          "right": 44,
+          "left_rem": 4,
+          "right_rem": 4,
+          "removed": 9,
+          "remaining": 40
+        },
+        {
+          "yao": 2,
+          "change": 2,
+          "left": 30,
+          "right": 9,
+          "left_rem": 2,
+          "right_rem": 1,
+          "removed": 4,
+          "remaining": 36
+        },
+        {
+          "yao": 2,
+          "change": 3,
+          "left": 21,
+          "right": 14,
+          "left_rem": 1,
+          "right_rem": 2,
+          "removed": 4,
+          "remaining": 32
+        },
+        {
+          "yao": 3,
+          "change": 1,
+          "left": 32,
+          "right": 16,
+          "left_rem": 4,
+          "right_rem": 4,
+          "removed": 9,
+          "remaining": 40
+        },
+        {
+          "yao": 3,
+          "change": 2,
+          "left": 3,
+          "right": 36,
+          "left_rem": 3,
+          "right_rem": 4,
+          "removed": 8,
+          "remaining": 32
+        },
+        {
+          "yao": 3,
+          "change": 3,
+          "left": 15,
+          "right": 16,
+          "left_rem": 3,
+          "right_rem": 4,
+          "removed": 8,
+          "remaining": 24
+        },
+        {
+          "yao": 4,
+          "change": 1,
+          "left": 45,
+          "right": 3,
+          "left_rem": 1,
+          "right_rem": 3,
+          "removed": 5,
+          "remaining": 44
+        },
+        {
+          "yao": 4,
+          "change": 2,
+          "left": 18,
+          "right": 25,
+          "left_rem": 2,
+          "right_rem": 1,
+          "removed": 4,
+          "remaining": 40
+        },
+        {
+          "yao": 4,
+          "change": 3,
+          "left": 24,
+          "right": 15,
+          "left_rem": 4,
+          "right_rem": 3,
+          "removed": 8,
+          "remaining": 32
+        },
+        {
+          "yao": 5,
+          "change": 1,
+          "left": 13,
+          "right": 35,
+          "left_rem": 1,
+          "right_rem": 3,
+          "removed": 5,
+          "remaining": 44
+        },
+        {
+          "yao": 5,
+          "change": 2,
+          "left": 10,
+          "right": 33,
+          "left_rem": 2,
+          "right_rem": 1,
+          "removed": 4,
+          "remaining": 40
+        },
+        {
+          "yao": 5,
+          "change": 3,
+          "left": 23,
+          "right": 16,
+          "left_rem": 3,
+          "right_rem": 4,
+          "removed": 8,
+          "remaining": 32
+        },
+        {
+          "yao": 6,
+          "change": 1,
+          "left": 13,
+          "right": 35,
           "left_rem": 1,
           "right_rem": 3,
           "removed": 5,
@@ -636,8 +637,8 @@
         {
           "yao": 6,
           "change": 2,
-          "left": 27,
-          "right": 16,
+          "left": 7,
+          "right": 36,
           "left_rem": 3,
           "right_rem": 4,
           "removed": 8,
@@ -646,36 +647,32 @@
         {
           "yao": 6,
           "change": 3,
-          "left": 24,
-          "right": 11,
-          "left_rem": 4,
-          "right_rem": 3,
-          "removed": 8,
-          "remaining": 28
+          "left": 9,
+          "right": 26,
+          "left_rem": 1,
+          "right_rem": 2,
+          "removed": 4,
+          "remaining": 32
         }
       ]
     },
     "hexagram": {
       "original": {
-        "name": "天火同人",
-        "symbol": "䷌",
-        "meaning": "同人于野，亨。利涉大川，利君子贞。"
+        "name": "坤为地",
+        "symbol": "䷁",
+        "meaning": "元亨，利牝马之贞。地势坤，君子以厚德载物。"
       },
       "moving_lines": [
-        1,
-        2,
-        3,
-        4,
-        5
+        3
       ],
       "changed": {
-        "name": "山水蒙",
-        "symbol": "䷃",
-        "meaning": "亨。匪我求童蒙，童蒙求我。"
+        "name": "地山谦",
+        "symbol": "䷎",
+        "meaning": "亨，君子有终。"
       }
     },
     "oracle": {
-      "decryption": "天机显示「天火同人」之象，同人于野，亨。利涉大川，利君子贞。……卦气流转，数据共振于链上。",
+      "decryption": "天机显示「坤为地」之象，元亨，利牝马之贞。地势坤，君子以厚德载物。……卦气流转，数据共振于链上。",
       "market_mapping": "NVDA 当前卦象映射盘面，阴阳交替间暗藏玄机。技术面需结合量能验证趋势方向。",
       "action": "Buy",
       "support_level": "N/A",
