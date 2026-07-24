@@ -1,8 +1,234 @@
 [
   {
     "ticker": "TSLA",
-    "date": "2026-07-23",
-    "seed_hex": "7e37e08e3687fbc9",
+    "date": "2026-07-24",
+    "seed_hex": "43f3f5a5589bc033",
+    "fmp_data": {
+      "close": 0.0,
+      "volume": 0,
+      "rsi": 50.0,
+      "macd": "N/A"
+    },
+    "divination": {
+      "lines": [
+        9,
+        7,
+        7,
+        8,
+        8,
+        7
+      ],
+      "binary": "111001",
+      "logs": [
+        {
+          "yao": 1,
+          "change": 1,
+          "left": 22,
+          "right": 26,
+          "left_rem": 2,
+          "right_rem": 2,
+          "removed": 5,
+          "remaining": 44
+        },
+        {
+          "yao": 1,
+          "change": 2,
+          "left": 41,
+          "right": 2,
+          "left_rem": 1,
+          "right_rem": 2,
+          "removed": 4,
+          "remaining": 40
+        },
+        {
+          "yao": 1,
+          "change": 3,
+          "left": 5,
+          "right": 34,
+          "left_rem": 1,
+          "right_rem": 2,
+          "removed": 4,
+          "remaining": 36
+        },
+        {
+          "yao": 2,
+          "change": 1,
+          "left": 17,
+          "right": 31,
+          "left_rem": 1,
+          "right_rem": 3,
+          "removed": 5,
+          "remaining": 44
+        },
+        {
+          "yao": 2,
+          "change": 2,
+          "left": 40,
+          "right": 3,
+          "left_rem": 4,
+          "right_rem": 3,
+          "removed": 8,
+          "remaining": 36
+        },
+        {
+          "yao": 2,
+          "change": 3,
+          "left": 15,
+          "right": 20,
+          "left_rem": 3,
+          "right_rem": 4,
+          "removed": 8,
+          "remaining": 28
+        },
+        {
+          "yao": 3,
+          "change": 1,
+          "left": 28,
+          "right": 20,
+          "left_rem": 4,
+          "right_rem": 4,
+          "removed": 9,
+          "remaining": 40
+        },
+        {
+          "yao": 3,
+          "change": 2,
+          "left": 36,
+          "right": 3,
+          "left_rem": 4,
+          "right_rem": 3,
+          "removed": 8,
+          "remaining": 32
+        },
+        {
+          "yao": 3,
+          "change": 3,
+          "left": 21,
+          "right": 10,
+          "left_rem": 1,
+          "right_rem": 2,
+          "removed": 4,
+          "remaining": 28
+        },
+        {
+          "yao": 4,
+          "change": 1,
+          "left": 24,
+          "right": 24,
+          "left_rem": 4,
+          "right_rem": 4,
+          "removed": 9,
+          "remaining": 40
+        },
+        {
+          "yao": 4,
+          "change": 2,
+          "left": 5,
+          "right": 34,
+          "left_rem": 1,
+          "right_rem": 2,
+          "removed": 4,
+          "remaining": 36
+        },
+        {
+          "yao": 4,
+          "change": 3,
+          "left": 21,
+          "right": 14,
+          "left_rem": 1,
+          "right_rem": 2,
+          "removed": 4,
+          "remaining": 32
+        },
+        {
+          "yao": 5,
+          "change": 1,
+          "left": 43,
+          "right": 5,
+          "left_rem": 3,
+          "right_rem": 1,
+          "removed": 5,
+          "remaining": 44
+        },
+        {
+          "yao": 5,
+          "change": 2,
+          "left": 39,
+          "right": 4,
+          "left_rem": 3,
+          "right_rem": 4,
+          "removed": 8,
+          "remaining": 36
+        },
+        {
+          "yao": 5,
+          "change": 3,
+          "left": 17,
+          "right": 18,
+          "left_rem": 1,
+          "right_rem": 2,
+          "removed": 4,
+          "remaining": 32
+        },
+        {
+          "yao": 6,
+          "change": 1,
+          "left": 32,
+          "right": 16,
+          "left_rem": 4,
+          "right_rem": 4,
+          "removed": 9,
+          "remaining": 40
+        },
+        {
+          "yao": 6,
+          "change": 2,
+          "left": 32,
+          "right": 7,
+          "left_rem": 4,
+          "right_rem": 3,
+          "removed": 8,
+          "remaining": 32
+        },
+        {
+          "yao": 6,
+          "change": 3,
+          "left": 25,
+          "right": 6,
+          "left_rem": 1,
+          "right_rem": 2,
+          "removed": 4,
+          "remaining": 28
+        }
+      ]
+    },
+    "hexagram": {
+      "original": {
+        "name": "山天大畜",
+        "symbol": "䷙",
+        "meaning": "利贞，不家食吉，利涉大川。"
+      },
+      "moving_lines": [
+        1
+      ],
+      "changed": {
+        "name": "山风蛊",
+        "symbol": "䷑",
+        "meaning": "元亨，利涉大川。先甲三日，后甲三日。"
+      }
+    },
+    "oracle": {
+      "decryption": "天机显示「山天大畜」之象，利贞，不家食吉，利涉大川。……卦气流转，数据共振于链上。",
+      "market_mapping": "TSLA 当前卦象映射盘面，阴阳交替间暗藏玄机。技术面需结合量能验证趋势方向。",
+      "action": "Buy",
+      "support_level": "N/A",
+      "resistance_level": "N/A"
+    }
+  },
+  {
+    "ticker": "QQQ",
+    "date": "2026-07-24",
+    "seed_hex": "2aebfc741ba06e87",
     "fmp_data": {
       "close": 0.0,
       "volume": 0,
@@ -14,17 +240,17 @@
         7,
         8,
         8,
+        8,
         7,
-        9,
         7
       ],
-      "binary": "100111",
+      "binary": "100011",
       "logs": [
         {
           "yao": 1,
           "change": 1,
-          "left": 36,
-          "right": 12,
+          "left": 28,
+          "right": 20,
           "left_rem": 4,
           "right_rem": 4,
           "removed": 9,
@@ -33,115 +259,25 @@
         {
           "yao": 1,
           "change": 2,
-          "left": 12,
-          "right": 27,
-          "left_rem": 4,
-          "right_rem": 3,
-          "removed": 8,
-          "remaining": 32
+          "left": 13,
+          "right": 26,
+          "left_rem": 1,
+          "right_rem": 2,
+          "removed": 4,
+          "remaining": 36
         },
         {
           "yao": 1,
           "change": 3,
-          "left": 26,
-          "right": 5,
-          "left_rem": 2,
-          "right_rem": 1,
-          "removed": 4,
-          "remaining": 28
-        },
-        {
-          "yao": 2,
-          "change": 1,
-          "left": 38,
-          "right": 10,
-          "left_rem": 2,
-          "right_rem": 2,
-          "removed": 5,
-          "remaining": 44
-        },
-        {
-          "yao": 2,
-          "change": 2,
-          "left": 21,
-          "right": 22,
-          "left_rem": 1,
-          "right_rem": 2,
-          "removed": 4,
-          "remaining": 40
-        },
-        {
-          "yao": 2,
-          "change": 3,
-          "left": 12,
-          "right": 27,
-          "left_rem": 4,
-          "right_rem": 3,
-          "removed": 8,
-          "remaining": 32
-        },
-        {
-          "yao": 3,
-          "change": 1,
-          "left": 41,
-          "right": 7,
-          "left_rem": 1,
-          "right_rem": 3,
-          "removed": 5,
-          "remaining": 44
-        },
-        {
-          "yao": 3,
-          "change": 2,
           "left": 16,
-          "right": 27,
+          "right": 19,
           "left_rem": 4,
           "right_rem": 3,
-          "removed": 8,
-          "remaining": 36
-        },
-        {
-          "yao": 3,
-          "change": 3,
-          "left": 30,
-          "right": 5,
-          "left_rem": 2,
-          "right_rem": 1,
-          "removed": 4,
-          "remaining": 32
-        },
-        {
-          "yao": 4,
-          "change": 1,
-          "left": 47,
-          "right": 1,
-          "left_rem": 3,
-          "right_rem": 1,
-          "removed": 5,
-          "remaining": 44
-        },
-        {
-          "yao": 4,
-          "change": 2,
-          "left": 28,
-          "right": 15,
-          "left_rem": 4,
-          "right_rem": 3,
-          "removed": 8,
-          "remaining": 36
-        },
-        {
-          "yao": 4,
-          "change": 3,
-          "left": 19,
-          "right": 16,
-          "left_rem": 3,
-          "right_rem": 4,
           "removed": 8,
           "remaining": 28
         },
         {
-          "yao": 5,
+          "yao": 2,
           "change": 1,
           "left": 46,
           "right": 2,
@@ -151,24 +287,114 @@
           "remaining": 44
         },
         {
-          "yao": 5,
+          "yao": 2,
           "change": 2,
+          "left": 34,
+          "right": 9,
+          "left_rem": 2,
+          "right_rem": 1,
+          "removed": 4,
+          "remaining": 40
+        },
+        {
+          "yao": 2,
+          "change": 3,
+          "left": 11,
+          "right": 28,
+          "left_rem": 3,
+          "right_rem": 4,
+          "removed": 8,
+          "remaining": 32
+        },
+        {
+          "yao": 3,
+          "change": 1,
           "left": 37,
-          "right": 6,
+          "right": 11,
+          "left_rem": 1,
+          "right_rem": 3,
+          "removed": 5,
+          "remaining": 44
+        },
+        {
+          "yao": 3,
+          "change": 2,
+          "left": 21,
+          "right": 22,
           "left_rem": 1,
           "right_rem": 2,
           "removed": 4,
           "remaining": 40
         },
         {
+          "yao": 3,
+          "change": 3,
+          "left": 3,
+          "right": 36,
+          "left_rem": 3,
+          "right_rem": 4,
+          "removed": 8,
+          "remaining": 32
+        },
+        {
+          "yao": 4,
+          "change": 1,
+          "left": 11,
+          "right": 37,
+          "left_rem": 3,
+          "right_rem": 1,
+          "removed": 5,
+          "remaining": 44
+        },
+        {
+          "yao": 4,
+          "change": 2,
+          "left": 34,
+          "right": 9,
+          "left_rem": 2,
+          "right_rem": 1,
+          "removed": 4,
+          "remaining": 40
+        },
+        {
+          "yao": 4,
+          "change": 3,
+          "left": 19,
+          "right": 20,
+          "left_rem": 3,
+          "right_rem": 4,
+          "removed": 8,
+          "remaining": 32
+        },
+        {
+          "yao": 5,
+          "change": 1,
+          "left": 39,
+          "right": 9,
+          "left_rem": 3,
+          "right_rem": 1,
+          "removed": 5,
+          "remaining": 44
+        },
+        {
+          "yao": 5,
+          "change": 2,
+          "left": 35,
+          "right": 8,
+          "left_rem": 3,
+          "right_rem": 4,
+          "removed": 8,
+          "remaining": 36
+        },
+        {
           "yao": 5,
           "change": 3,
-          "left": 5,
-          "right": 34,
-          "left_rem": 1,
-          "right_rem": 2,
-          "removed": 4,
-          "remaining": 36
+          "left": 20,
+          "right": 15,
+          "left_rem": 4,
+          "right_rem": 3,
+          "removed": 8,
+          "remaining": 28
         },
         {
           "yao": 6,
@@ -183,268 +409,36 @@
         {
           "yao": 6,
           "change": 2,
-          "left": 33,
-          "right": 6,
-          "left_rem": 1,
-          "right_rem": 2,
-          "removed": 4,
-          "remaining": 36
-        },
-        {
-          "yao": 6,
-          "change": 3,
-          "left": 24,
-          "right": 11,
-          "left_rem": 4,
-          "right_rem": 3,
-          "removed": 8,
-          "remaining": 28
-        }
-      ]
-    },
-    "hexagram": {
-      "original": {
-        "name": "天雷无妄",
-        "symbol": "䷘",
-        "meaning": "元亨利贞。其匪正有眚，不利有攸往。"
-      },
-      "moving_lines": [
-        5
-      ],
-      "changed": {
-        "name": "火雷噬嗑",
-        "symbol": "䷔",
-        "meaning": "亨，利用狱。"
-      }
-    },
-    "oracle": {
-      "decryption": "天机显示「天雷无妄」之象，元亨利贞。其匪正有眚，不利有攸往。……卦气流转，数据共振于链上。",
-      "market_mapping": "TSLA 当前卦象映射盘面，阴阳交替间暗藏玄机。技术面需结合量能验证趋势方向。",
-      "action": "Buy",
-      "support_level": "N/A",
-      "resistance_level": "N/A"
-    }
-  },
-  {
-    "ticker": "QQQ",
-    "date": "2026-07-23",
-    "seed_hex": "1bf04cf1dd78b379",
-    "fmp_data": {
-      "close": 0.0,
-      "volume": 0,
-      "rsi": 50.0,
-      "macd": "N/A"
-    },
-    "divination": {
-      "lines": [
-        6,
-        7,
-        7,
-        8,
-        7,
-        8
-      ],
-      "binary": "011010",
-      "logs": [
-        {
-          "yao": 1,
-          "change": 1,
-          "left": 28,
-          "right": 20,
-          "left_rem": 4,
-          "right_rem": 4,
-          "removed": 9,
-          "remaining": 40
-        },
-        {
-          "yao": 1,
-          "change": 2,
-          "left": 36,
-          "right": 3,
-          "left_rem": 4,
-          "right_rem": 3,
-          "removed": 8,
-          "remaining": 32
-        },
-        {
-          "yao": 1,
-          "change": 3,
-          "left": 31,
-          "right": 0,
-          "left_rem": 3,
-          "right_rem": 4,
-          "removed": 8,
-          "remaining": 24
-        },
-        {
-          "yao": 2,
-          "change": 1,
-          "left": 41,
-          "right": 7,
-          "left_rem": 1,
-          "right_rem": 3,
-          "removed": 5,
-          "remaining": 44
-        },
-        {
-          "yao": 2,
-          "change": 2,
-          "left": 32,
-          "right": 11,
-          "left_rem": 4,
-          "right_rem": 3,
-          "removed": 8,
-          "remaining": 36
-        },
-        {
-          "yao": 2,
-          "change": 3,
-          "left": 31,
-          "right": 4,
-          "left_rem": 3,
-          "right_rem": 4,
-          "removed": 8,
-          "remaining": 28
-        },
-        {
-          "yao": 3,
-          "change": 1,
-          "left": 36,
-          "right": 12,
-          "left_rem": 4,
-          "right_rem": 4,
-          "removed": 9,
-          "remaining": 40
-        },
-        {
-          "yao": 3,
-          "change": 2,
-          "left": 12,
-          "right": 27,
-          "left_rem": 4,
-          "right_rem": 3,
-          "removed": 8,
-          "remaining": 32
-        },
-        {
-          "yao": 3,
-          "change": 3,
           "left": 13,
-          "right": 18,
+          "right": 26,
           "left_rem": 1,
           "right_rem": 2,
           "removed": 4,
-          "remaining": 28
-        },
-        {
-          "yao": 4,
-          "change": 1,
-          "left": 9,
-          "right": 39,
-          "left_rem": 1,
-          "right_rem": 3,
-          "removed": 5,
-          "remaining": 44
-        },
-        {
-          "yao": 4,
-          "change": 2,
-          "left": 10,
-          "right": 33,
-          "left_rem": 2,
-          "right_rem": 1,
-          "removed": 4,
-          "remaining": 40
-        },
-        {
-          "yao": 4,
-          "change": 3,
-          "left": 36,
-          "right": 3,
-          "left_rem": 4,
-          "right_rem": 3,
-          "removed": 8,
-          "remaining": 32
-        },
-        {
-          "yao": 5,
-          "change": 1,
-          "left": 38,
-          "right": 10,
-          "left_rem": 2,
-          "right_rem": 2,
-          "removed": 5,
-          "remaining": 44
-        },
-        {
-          "yao": 5,
-          "change": 2,
-          "left": 27,
-          "right": 16,
-          "left_rem": 3,
-          "right_rem": 4,
-          "removed": 8,
           "remaining": 36
         },
         {
-          "yao": 5,
+          "yao": 6,
           "change": 3,
-          "left": 24,
-          "right": 11,
-          "left_rem": 4,
-          "right_rem": 3,
-          "removed": 8,
-          "remaining": 28
-        },
-        {
-          "yao": 6,
-          "change": 1,
-          "left": 5,
-          "right": 43,
-          "left_rem": 1,
-          "right_rem": 3,
-          "removed": 5,
-          "remaining": 44
-        },
-        {
-          "yao": 6,
-          "change": 2,
           "left": 12,
-          "right": 31,
+          "right": 23,
           "left_rem": 4,
           "right_rem": 3,
           "removed": 8,
-          "remaining": 36
-        },
-        {
-          "yao": 6,
-          "change": 3,
-          "left": 22,
-          "right": 13,
-          "left_rem": 2,
-          "right_rem": 1,
-          "removed": 4,
-          "remaining": 32
+          "remaining": 28
         }
       ]
     },
     "hexagram": {
       "original": {
-        "name": "水风井",
-        "symbol": "䷯",
-        "meaning": "改邑不改井，无丧无得，往来井井。"
+        "name": "风雷益",
+        "symbol": "䷩",
+        "meaning": "利有攸往，利涉大川。"
       },
-      "moving_lines": [
-        1
-      ],
-      "changed": {
-        "name": "水天需",
-        "symbol": "䷄",
-        "meaning": "有孚，光亨，贞吉，利涉大川。"
-      }
+      "moving_lines": [],
+      "changed": null
     },
     "oracle": {
-      "decryption": "天机显示「水风井」之象，改邑不改井，无丧无得，往来井井。……卦气流转，数据共振于链上。",
+      "decryption": "天机显示「风雷益」之象，利有攸往，利涉大川。……卦气流转，数据共振于链上。",
       "market_mapping": "QQQ 当前卦象映射盘面，阴阳交替间暗藏玄机。技术面需结合量能验证趋势方向。",
       "action": "Hold",
       "support_level": "N/A",
@@ -453,8 +447,8 @@
   },
   {
     "ticker": "NVDA",
-    "date": "2026-07-23",
-    "seed_hex": "85f88eadd5d012a4",
+    "date": "2026-07-24",
+    "seed_hex": "490f62ee3133fe9d",
     "fmp_data": {
       "close": 0.0,
       "volume": 0,
@@ -465,175 +459,25 @@
       "lines": [
         8,
         7,
+        8,
         7,
-        7,
-        7,
-        8
+        8,
+        9
       ],
-      "binary": "011110",
+      "binary": "010101",
       "logs": [
         {
           "yao": 1,
           "change": 1,
-          "left": 28,
-          "right": 20,
-          "left_rem": 4,
-          "right_rem": 4,
-          "removed": 9,
-          "remaining": 40
+          "left": 46,
+          "right": 2,
+          "left_rem": 2,
+          "right_rem": 2,
+          "removed": 5,
+          "remaining": 44
         },
         {
           "yao": 1,
-          "change": 2,
-          "left": 38,
-          "right": 1,
-          "left_rem": 2,
-          "right_rem": 1,
-          "removed": 4,
-          "remaining": 36
-        },
-        {
-          "yao": 1,
-          "change": 3,
-          "left": 30,
-          "right": 5,
-          "left_rem": 2,
-          "right_rem": 1,
-          "removed": 4,
-          "remaining": 32
-        },
-        {
-          "yao": 2,
-          "change": 1,
-          "left": 36,
-          "right": 12,
-          "left_rem": 4,
-          "right_rem": 4,
-          "removed": 9,
-          "remaining": 40
-        },
-        {
-          "yao": 2,
-          "change": 2,
-          "left": 30,
-          "right": 9,
-          "left_rem": 2,
-          "right_rem": 1,
-          "removed": 4,
-          "remaining": 36
-        },
-        {
-          "yao": 2,
-          "change": 3,
-          "left": 7,
-          "right": 28,
-          "left_rem": 3,
-          "right_rem": 4,
-          "removed": 8,
-          "remaining": 28
-        },
-        {
-          "yao": 3,
-          "change": 1,
-          "left": 43,
-          "right": 5,
-          "left_rem": 3,
-          "right_rem": 1,
-          "removed": 5,
-          "remaining": 44
-        },
-        {
-          "yao": 3,
-          "change": 2,
-          "left": 7,
-          "right": 36,
-          "left_rem": 3,
-          "right_rem": 4,
-          "removed": 8,
-          "remaining": 36
-        },
-        {
-          "yao": 3,
-          "change": 3,
-          "left": 3,
-          "right": 32,
-          "left_rem": 3,
-          "right_rem": 4,
-          "removed": 8,
-          "remaining": 28
-        },
-        {
-          "yao": 4,
-          "change": 1,
-          "left": 45,
-          "right": 3,
-          "left_rem": 1,
-          "right_rem": 3,
-          "removed": 5,
-          "remaining": 44
-        },
-        {
-          "yao": 4,
-          "change": 2,
-          "left": 19,
-          "right": 24,
-          "left_rem": 3,
-          "right_rem": 4,
-          "removed": 8,
-          "remaining": 36
-        },
-        {
-          "yao": 4,
-          "change": 3,
-          "left": 35,
-          "right": 0,
-          "left_rem": 3,
-          "right_rem": 4,
-          "removed": 8,
-          "remaining": 28
-        },
-        {
-          "yao": 5,
-          "change": 1,
-          "left": 28,
-          "right": 20,
-          "left_rem": 4,
-          "right_rem": 4,
-          "removed": 9,
-          "remaining": 40
-        },
-        {
-          "yao": 5,
-          "change": 2,
-          "left": 4,
-          "right": 35,
-          "left_rem": 4,
-          "right_rem": 3,
-          "removed": 8,
-          "remaining": 32
-        },
-        {
-          "yao": 5,
-          "change": 3,
-          "left": 10,
-          "right": 21,
-          "left_rem": 2,
-          "right_rem": 1,
-          "removed": 4,
-          "remaining": 28
-        },
-        {
-          "yao": 6,
-          "change": 1,
-          "left": 37,
-          "right": 11,
-          "left_rem": 1,
-          "right_rem": 3,
-          "removed": 5,
-          "remaining": 44
-        },
-        {
-          "yao": 6,
           "change": 2,
           "left": 35,
           "right": 8,
@@ -643,28 +487,184 @@
           "remaining": 36
         },
         {
-          "yao": 6,
+          "yao": 1,
           "change": 3,
-          "left": 2,
-          "right": 33,
+          "left": 1,
+          "right": 34,
+          "left_rem": 1,
+          "right_rem": 2,
+          "removed": 4,
+          "remaining": 32
+        },
+        {
+          "yao": 2,
+          "change": 1,
+          "left": 37,
+          "right": 11,
+          "left_rem": 1,
+          "right_rem": 3,
+          "removed": 5,
+          "remaining": 44
+        },
+        {
+          "yao": 2,
+          "change": 2,
+          "left": 8,
+          "right": 35,
+          "left_rem": 4,
+          "right_rem": 3,
+          "removed": 8,
+          "remaining": 36
+        },
+        {
+          "yao": 2,
+          "change": 3,
+          "left": 32,
+          "right": 3,
+          "left_rem": 4,
+          "right_rem": 3,
+          "removed": 8,
+          "remaining": 28
+        },
+        {
+          "yao": 3,
+          "change": 1,
+          "left": 38,
+          "right": 10,
+          "left_rem": 2,
+          "right_rem": 2,
+          "removed": 5,
+          "remaining": 44
+        },
+        {
+          "yao": 3,
+          "change": 2,
+          "left": 11,
+          "right": 32,
+          "left_rem": 3,
+          "right_rem": 4,
+          "removed": 8,
+          "remaining": 36
+        },
+        {
+          "yao": 3,
+          "change": 3,
+          "left": 21,
+          "right": 14,
+          "left_rem": 1,
+          "right_rem": 2,
+          "removed": 4,
+          "remaining": 32
+        },
+        {
+          "yao": 4,
+          "change": 1,
+          "left": 42,
+          "right": 6,
+          "left_rem": 2,
+          "right_rem": 2,
+          "removed": 5,
+          "remaining": 44
+        },
+        {
+          "yao": 4,
+          "change": 2,
+          "left": 3,
+          "right": 40,
+          "left_rem": 3,
+          "right_rem": 4,
+          "removed": 8,
+          "remaining": 36
+        },
+        {
+          "yao": 4,
+          "change": 3,
+          "left": 35,
+          "right": 0,
+          "left_rem": 3,
+          "right_rem": 4,
+          "removed": 8,
+          "remaining": 28
+        },
+        {
+          "yao": 5,
+          "change": 1,
+          "left": 8,
+          "right": 40,
+          "left_rem": 4,
+          "right_rem": 4,
+          "removed": 9,
+          "remaining": 40
+        },
+        {
+          "yao": 5,
+          "change": 2,
+          "left": 22,
+          "right": 17,
+          "left_rem": 2,
+          "right_rem": 1,
+          "removed": 4,
+          "remaining": 36
+        },
+        {
+          "yao": 5,
+          "change": 3,
+          "left": 14,
+          "right": 21,
           "left_rem": 2,
           "right_rem": 1,
           "removed": 4,
           "remaining": 32
+        },
+        {
+          "yao": 6,
+          "change": 1,
+          "left": 3,
+          "right": 45,
+          "left_rem": 3,
+          "right_rem": 1,
+          "removed": 5,
+          "remaining": 44
+        },
+        {
+          "yao": 6,
+          "change": 2,
+          "left": 22,
+          "right": 21,
+          "left_rem": 2,
+          "right_rem": 1,
+          "removed": 4,
+          "remaining": 40
+        },
+        {
+          "yao": 6,
+          "change": 3,
+          "left": 6,
+          "right": 33,
+          "left_rem": 2,
+          "right_rem": 1,
+          "removed": 4,
+          "remaining": 36
         }
       ]
     },
     "hexagram": {
       "original": {
-        "name": "泽风大过",
-        "symbol": "䷛",
-        "meaning": "栋桡，利有攸往，亨。"
+        "name": "水火既济",
+        "symbol": "䷾",
+        "meaning": "亨小，利贞。初吉终乱。"
       },
-      "moving_lines": [],
-      "changed": null
+      "moving_lines": [
+        6
+      ],
+      "changed": {
+        "name": "雷水解",
+        "symbol": "䷧",
+        "meaning": "利西南，无所往，其来复吉。有攸往，夙吉。"
+      }
     },
     "oracle": {
-      "decryption": "天机显示「泽风大过」之象，栋桡，利有攸往，亨。……卦气流转，数据共振于链上。",
+      "decryption": "天机显示「水火既济」之象，亨小，利贞。初吉终乱。……卦气流转，数据共振于链上。",
       "market_mapping": "NVDA 当前卦象映射盘面，阴阳交替间暗藏玄机。技术面需结合量能验证趋势方向。",
       "action": "Buy",
       "support_level": "N/A",
